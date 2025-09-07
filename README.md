@@ -12,11 +12,11 @@ A Full Stack Real-time chat application with React, Express, and MongoDB featuri
 🐞 Error handling both on the server and on the client
 ⭐ At the end Deployment by Render
 
-#$ 🖼 Screenshots
-<img width="932" height="699" alt="Screenshot (221)" src="https://github.com/user-attachments/assets/c0b60b30-396b-4b06-8f41-707773e75844" />
-<img width="932" height="699" alt="Screenshot (220)" src="https://github.com/user-attachments/assets/6542e1d6-b89f-4fde-94ec-373c08729d7b" />
-<img width="932" height="699" alt="Screenshot (218)" src="https://github.com/user-attachments/assets/adf9bd21-e0d8-45e8-8dc4-117c471470c4" />
-<img width="932" height="699" alt="Screenshot (222)" src="https://github.com/user-attachments/assets/488e7065-c518-45ae-8267-0309e062bb45" />
+# 🖼 Screenshots
+<img width="800" height="600" alt="Screenshot (221)" src="https://github.com/user-attachments/assets/c0b60b30-396b-4b06-8f41-707773e75844" />
+<img width="800" height="600" alt="Screenshot (220)" src="https://github.com/user-attachments/assets/6542e1d6-b89f-4fde-94ec-373c08729d7b" />
+<img width="800" height="600" alt="Screenshot (218)" src="https://github.com/user-attachments/assets/adf9bd21-e0d8-45e8-8dc4-117c471470c4" />
+<img width="800" height="600" alt="Screenshot (222)" src="https://github.com/user-attachments/assets/488e7065-c518-45ae-8267-0309e062bb45" />
 
 ## 🛠 Tech Stack
 
