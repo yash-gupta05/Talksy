@@ -2,6 +2,7 @@
 A Full Stack Real-time chat application with React, Express, and MongoDB featuring authentication, profile management, and instant messaging.
 [Live Demo](https://talksy-z6ya.onrender.com)
 
+
 ## 🚀 Highlights
 
 🎃 Authentication & Authorization with JWT
@@ -15,6 +16,7 @@ A Full Stack Real-time chat application with React, Express, and MongoDB featuri
 🐞 Error handling both on the server and on the client
 
 ⭐ At the end Deployment by Render
+
 
 ## 🖼 Screenshots
 
@@ -30,6 +32,7 @@ A Full Stack Real-time chat application with React, Express, and MongoDB featuri
 ### Settings Page
 <img width="800" height="600" alt="Screenshot (221)" src="https://github.com/user-attachments/assets/c0b60b30-396b-4b06-8f41-707773e75844" />
 
+
 ## 🛠 Tech Stack
 
 Frontend: React, JavaScript, HTML, CSS
@@ -37,6 +40,7 @@ Frontend: React, JavaScript, HTML, CSS
 Backend: Node.js, Express.js
 
 Database: MongoDB
+
 
 ## Setup .env file
 ```
