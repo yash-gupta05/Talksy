@@ -4,7 +4,7 @@ A Full Stack Real-time chat application with React, Express, and MongoDB featuri
 
 ## 🚀 Highlights
 
-🎃 Authentication && Authorization with JWT
+🎃 Authentication & Authorization with JWT
 
 👾 Real-time messaging with Socket.io
 
