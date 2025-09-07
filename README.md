@@ -2,7 +2,7 @@
 A Full Stack Real-time chat application with React, Express, and MongoDB featuring authentication, profile management, and instant messaging.
 [Live Demo](https://talksy-z6ya.onrender.com)
 
-
+<br>
 ## 🚀 Highlights
 
 🎃 Authentication & Authorization with JWT
