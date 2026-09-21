@@ -21,16 +21,27 @@ A full-stack real-time chat application built with React, Express, Socket.io, an
 
 ## ⚡ Performance
 
-Measured on my machine against MongoDB Atlas. Scripts to reproduce these are in [`backend/benchmarks`](backend/benchmarks).
+All numbers were measured on my local machine against MongoDB Atlas. Scripts to reproduce them are in [`backend/benchmarks`](backend/benchmarks).
+
+### Message fetch: pagination + indexes
 
 | Metric | Before | After |
 |---|---|---|
 | Fetch latency, 20k-message conversation (median of 5 runs) | ~890 ms | ~34 ms (≈26x faster) |
 | Documents scanned per fetch | 42,128 | 50 |
 
-**What changed:** replaced an unbounded `find()` with cursor-based pagination (`createdAt < before`, sorted, limited) and added compound indexes on `(senderId, receiverId, createdAt)` and `(receiverId, senderId, createdAt)`, one for each branch of the query's `$or`.
+### Load test: WebSocket connections and message delivery
 
-**Load test:** 100 concurrent WebSocket connections and 1,000 messages, with 0 failures and 100% delivery. The test client runs on the same machine as the server, so latency figures are indicative rather than absolute.
+Each socket is a simulated user. Users are paired, and one user in each pair sends messages to the other, so half the sockets are active senders.
+
+| Sockets | Total messages | Failures | Delivered | Throughput | p50 latency |
+|---|---|---|---|---|---|
+| 20 | 1,000 | 0 | 100% | 47 msg/s | 79 ms |
+| 100 | 5,000 | 0 | 100% | 61 msg/s | 969 ms |
+| 200 | 2,000 | 0 | 100% | 62 msg/s | 1,111 ms |
+| 500 | 5,000 | 0 | 98.2% (483/500 connected) | 68 msg/s | 3,049 ms |
+
+**Reading the results:** throughput saturates at roughly 60-70 msg/s on a single Node process, so latency at higher connection counts is queueing rather than slow requests (a single request costs about 70 ms of server work, matching the 79 ms median at 20 sockets). Delivery is reliable up to 200 connections and starts to degrade at 500. The test client runs on the same machine as the server, so figures are indicative rather than absolute.
 
 ## 🖼 Screenshots
 
@@ -38,13 +49,14 @@ Measured on my machine against MongoDB Atlas. Scripts to reproduce these are in 
 <img width="1907" height="982" alt="Signup Page" src="https://github.com/user-attachments/assets/488e7065-c518-45ae-8267-0309e062bb45" />
 
 ### Home Page
-<img width="1907" height="982" alt="Signup Page" src="https://github.com/user-attachments/assets/488e7065-c518-45ae-8267-0309e062bb45" />
+<img width="1907" height="982" alt="Signup Page" src="https://github.com/user-attachments/assets/6344ea07-fc58-4882-b648-52dea8da006a" />
 
 ### Profile Page
 <img width="1907" height="982" alt="Profile Page" src="https://github.com/user-attachments/assets/6542e1d6-b89f-4fde-94ec-373c08729d7b" />
 
 ### Settings Page
-<img width="1907" height="982" alt="Settings Page" src="https://github.com/user-attachments/assets/c0b60b30-396b-4b06-8f41-707773e75844" />
+<img width="1907" height="982" alt="Settings Page" src="https://github.com/user-attachments/assets/62682dbe-801f-4cbf-a366-6d68b0b632d5" />
+
 
 ## 🛠 Tech Stack
 
