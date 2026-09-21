@@ -1,3 +1,4 @@
+import { useChatStore } from "./useChatStore";
 import { create } from "zustand";
 import { axiosInstance } from "../lib/axios.js";
 import toast from "react-hot-toast";
@@ -63,10 +64,17 @@ export const useAuthStore = create((set, get) => ({
       set({ authUser: null });
       toast.success("Logged out successfully");
       get().disconnectSocket();
+      useChatStore.setState({
+        messages: [],
+        users: [],
+        selectedUser: null,
+        unreadCounts: {},
+        lastMessageAt: {},
+      });
     } catch (error) {
       toast.error(error.response.data.message);
     }
-  },
+},
 
   updateProfile: async (data) => {
     set({ isUpdatingProfile: true });
