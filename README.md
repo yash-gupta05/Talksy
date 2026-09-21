@@ -25,7 +25,7 @@ Measured on my machine against MongoDB Atlas. Scripts to reproduce these are in 
 
 | Metric | Before | After |
 |---|---|---|
-| Fetch latency, 20k-message conversation | 1,151 ms | 36 ms |
+| Fetch latency, 20k-message conversation (median of 5 runs) | ~890 ms | ~34 ms (≈26x faster) |
 | Documents scanned per fetch | 42,128 | 50 |
 
 **What changed:** replaced an unbounded `find()` with cursor-based pagination (`createdAt < before`, sorted, limited) and added compound indexes on `(senderId, receiverId, createdAt)` and `(receiverId, senderId, createdAt)`, one for each branch of the query's `$or`.
