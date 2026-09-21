@@ -113,10 +113,3 @@ Creates 15 demo accounts (password: `123456`). Safe to run more than once: exist
 ## 📊 Optional: run the benchmarks
 
 See [`backend/benchmarks/README.md`](backend/benchmarks/README.md). These scripts write fake data to the database in `MONGODB_URI`, so read the warnings there before running them.
-
-## 🔭 Possible improvements
-
-- Scale Socket.io horizontally with the Redis adapter (presence currently lives in one process's memory)
-- Track multiple tabs per user so closing one tab doesn't mark them offline
-- Full-text message search inside a conversation
-- A `conversations` collection to avoid recomputing last-message and unread counts on every sidebar load
