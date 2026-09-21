@@ -1,4 +1,4 @@
-<img width="1907" height="982" alt="image" src="https://github.com/user-attachments/assets/a198002d-b817-4d73-84ab-aed426bf3fb2" /># ✨ Talksy ✨
+# ✨ Talksy ✨
 
 A full-stack real-time chat application built with React, Express, Socket.io, and MongoDB, featuring JWT authentication, live messaging, unread tracking, and an efficient paginated message API.
 
@@ -34,16 +34,16 @@ Measured on my machine against MongoDB Atlas. Scripts to reproduce these are in 
 ## 🖼 Screenshots
 
 ### Signup Page
-<img width="800" height="600" alt="Signup Page" src="https://github.com/user-attachments/assets/488e7065-c518-45ae-8267-0309e062bb45" />
+<img width="1907" height="982" alt="Signup Page" src="https://github.com/user-attachments/assets/488e7065-c518-45ae-8267-0309e062bb45" />
 
 ### Home Page
-<img width="800" height="600" alt="Home Page" src="https://github.com/user-attachments/assets/e3ffca12-7d1e-4b56-9a5c-972debba5491" />
+<img width="1907" height="982" alt="Home Page" src="https://github.com/user-attachments/assets/e3ffca12-7d1e-4b56-9a5c-972debba5491" />
 
 ### Profile Page
-<img width="800" height="600" alt="Profile Page" src="https://github.com/user-attachments/assets/6542e1d6-b89f-4fde-94ec-373c08729d7b" />
+<img width="1907" height="982" alt="Profile Page" src="https://github.com/user-attachments/assets/6542e1d6-b89f-4fde-94ec-373c08729d7b" />
 
 ### Settings Page
-<img width="800" height="600" alt="Settings Page" src="https://github.com/user-attachments/assets/c0b60b30-396b-4b06-8f41-707773e75844" />
+<img width="1907" height="982" alt="Settings Page" src="https://github.com/user-attachments/assets/c0b60b30-396b-4b06-8f41-707773e75844" />
 
 ## 🛠 Tech Stack
 
