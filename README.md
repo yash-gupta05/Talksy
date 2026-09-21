@@ -2,7 +2,7 @@
 
 A full-stack real-time chat application built with React, Express, Socket.io, and MongoDB, featuring JWT authentication, live messaging, unread tracking, and an efficient paginated message API.
 
-[Live Demo](https://talksy-z6ya.onrender.com)
+[Live Demo](https://talksy-z6ya.onrender.com) (hosted on Render's free tier, so the first load after inactivity can take up to a minute)
 
 ## 🚀 Highlights
 
