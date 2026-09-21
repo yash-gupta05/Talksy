@@ -33,13 +33,22 @@ chat data you want to keep).
 
 ## Results (my machine, MongoDB Atlas)
 
+Query benchmark (median of 5 runs, 20k-message conversation):
+
 | Metric | Before | After |
 |---|---|---|
-| Fetch latency, 20k-message chat | 1,151 ms | 36 ms |
+| Fetch latency | ~890 ms | ~34 ms |
 | Documents scanned | 42,128 | 50 |
 
-Load test: 100 concurrent WebSocket connections, 1,000 messages, 0 failures,
-100% delivery.
+Load test (sockets are simulated users; half are active senders):
+
+| Sockets | Total messages | Failures | Delivered | Throughput | p50 latency |
+|---|---|---|---|---|---|
+| 20 | 1,000 | 0 | 100% | 47 msg/s | 79 ms |
+| 100 | 5,000 | 0 | 100% | 61 msg/s | 969 ms |
+| 200 | 2,000 | 0 | 100% | 62 msg/s | 1,111 ms |
+| 500 | 5,000 | 0 | 98.2% | 68 msg/s | 3,049 ms |
 
 Notes: the load-test client runs on the same machine as the server, so latency
-figures include client-side overhead and are indicative only.
+figures include client-side overhead and are indicative only. Run each
+benchmark several times and report the median, since latency to Atlas varies.
