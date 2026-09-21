@@ -1,8 +1,25 @@
+/**
+ * SEED SCRIPT: creates 15 demo users.
+ *
+ * WARNING: this WRITES to the database in MONGODB_URI.
+ *  - Do NOT run against a production database.
+ *  - Safe to run more than once: users whose email already exists are skipped.
+ *
+ * Usage (from backend/):  node src/seeds/user.seed.js
+ * Demo password for all seeded users: 123456
+ */
 import { config } from "dotenv";
+import bcrypt from "bcryptjs";
+import mongoose from "mongoose";
 import { connectDB } from "../lib/db.js";
 import User from "../models/user.model.js";
 
 config();
+
+if (process.env.NODE_ENV === "production") {
+  console.error("Refusing to seed users when NODE_ENV=production.");
+  process.exit(1);
+}
 
 const seedUsers = [
   // Female Users
@@ -103,13 +120,38 @@ const seedUsers = [
 const seedDatabase = async () => {
   try {
     await connectDB();
+    console.log(`Seeding users into database: ${mongoose.connection.name}`);
 
-    await User.insertMany(seedUsers);
-    console.log("Database seeded successfully");
+    // Skip users that already exist (makes the script safe to re-run)
+    const emails = seedUsers.map((u) => u.email);
+    const existing = await User.find({ email: { $in: emails } }).select("email");
+    const existingEmails = new Set(existing.map((u) => u.email));
+    const toInsert = seedUsers.filter((u) => !existingEmails.has(u.email));
+
+    if (toInsert.length === 0) {
+      console.log("All seed users already exist. Nothing to do.");
+      return;
+    }
+
+    // Hash passwords so the seeded accounts can actually log in
+    const salt = await bcrypt.genSalt(10);
+    const hashed = await Promise.all(
+      toInsert.map(async (u) => ({
+        ...u,
+        password: await bcrypt.hash(u.password, salt),
+      }))
+    );
+
+    await User.insertMany(hashed);
+    console.log(
+      `Seeded ${hashed.length} users (${existingEmails.size} already existed).`
+    );
   } catch (error) {
     console.error("Error seeding database:", error);
+    process.exitCode = 1;
+  } finally {
+    await mongoose.disconnect();
   }
 };
 
-// Call the function
 seedDatabase();
